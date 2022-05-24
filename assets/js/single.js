@@ -1,8 +1,6 @@
 var repoNameEl = document.querySelector("#repo-name");
 var issueContainerEl = document.querySelector("#issues-container");
 var limitWarningEl = document.querySelector("#limit-warning");
-var queryString = document.location.search;
-var repoNameEl = document.querySelector("#repo-name");
 
 var getRepoName = function() {
     // grab repo name from url query string
@@ -20,8 +18,7 @@ var getRepoName = function() {
     }
 };
 
-
-var getRepoIssues = function() {
+var getRepoIssues = function(repo) {
     // format the github api url
     var apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
 
@@ -61,7 +58,6 @@ var displayIssues = function(issues) {
         // create span to hold issue title
         var titleEl = document.createElement("span");
         titleEl.textContent = issues[i].title;
-
 
         // append to container
         issueEl.appendChild(titleEl);
